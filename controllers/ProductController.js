@@ -62,7 +62,7 @@ exports.deleteProduct = async (req, res) => {
 exports.getFeaturedProducts = async (req, res) => {
   try {
     const products = await ProductModel.find({ is_featured: true });
-    res.json({ data: product, status: "success" });
+    res.json({ data: products, status: "success" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -71,7 +71,7 @@ exports.getFeaturedProducts = async (req, res) => {
 exports.getRecentProducts = async (req, res) => {
   try {
     const products = await ProductModel.find({ is_recent: true });
-    res.json({ data: product, status: "success" });
+    res.json({ data: products, status: "success" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
