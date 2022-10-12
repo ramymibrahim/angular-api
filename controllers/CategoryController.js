@@ -8,7 +8,7 @@ exports.getAllCategories = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
- 
+
 exports.createCategory = async (req, res) => {
   try {
     const category = await categoryService.createCategory(req.body);

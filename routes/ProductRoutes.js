@@ -5,11 +5,19 @@ const {
   getProductById,
   updateProduct,
   deleteProduct,
+  getFeaturedProducts,
+  getRecentProducts,
+  getProductsByCategoryId,
 } = require("../controllers/ProductController");
 
 const router = express.Router();
 
-router.route("/").get(getAllProducts).post(createProduct);
-router.route("/:id").get(getProductById).put(updateProduct).delete(deleteProduct);
-
+router.get("/", getAllProducts);
+router.post("/", createProduct);
+router.get("/:id", getProductById);
+router.put("/:id", updateProduct);
+router.delete("/:id", deleteProduct);
+router.get("/getFeatured", getFeaturedProducts);
+router.get("/getRecent", getRecentProducts);
+router.get("/getByCategoryId/:id", getProductsByCategoryId);
 module.exports = router;

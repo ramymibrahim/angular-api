@@ -1,4 +1,5 @@
 const express = require("express");
+const auth = require("../middleware/auth");
 const {
   getAllCategories,
   createCategory,
@@ -9,7 +10,12 @@ const {
 
 const router = express.Router();
 
-router.route("/").get(getAllCategories).post(createCategory);
-router.route("/:id").get(getCategoryById).put(updateCategory).delete(deleteCategory);
+router.post("/", auth, createCategory);
+router.get("/", getAllCategories);
+router
+  .route("/:id")
+  .get(getCategoryById)
+  .put(updateCategory)
+  .delete(deleteCategory);
 
 module.exports = router;
