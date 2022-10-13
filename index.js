@@ -24,8 +24,9 @@ mongoose.connect(
     }
   }
 );
-
+const cors = require("cors");
 express()
+  .use(cors({ origin: "*" }))
   .use(express.json())
   .use(express.static(path.join(__dirname, "public")))
   .use("/api/categories", categoryRouter)
